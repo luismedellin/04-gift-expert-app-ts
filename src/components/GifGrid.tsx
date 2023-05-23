@@ -12,6 +12,9 @@ export const GifGrid = ({ category }: Props) => {
   return (
     <>
       <h3>{category}</h3>
+      {
+        isLoading && <h2>Loading...</h2>
+      }
       <div className="card-grid">
         {images.map((img: Image) => (
           <>
