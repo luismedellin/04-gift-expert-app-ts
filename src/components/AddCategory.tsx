@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-export const AddCategory = () => {
-  const [inputValue, setInputValue] = useState("One Punch");
+interface Props {
+    setCategories: (value: string) => void;
+}
+
+export const AddCategory = ({setCategories}: Props) => {
+  const [inputValue, setInputValue] = useState('');
 
   const onInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(target.value);
@@ -9,11 +13,14 @@ export const AddCategory = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(inputValue);
+    if(inputValue.trim().length <= 1) return;
+    
+    setCategories(inputValue);
+    setInputValue('');
   }
 
   return (
-    <form onSubmit={event => onSubmit(event)}>
+    <form onSubmit={onSubmit}>
       <input
         type="text"
         placeholder="Buscar gifs"
