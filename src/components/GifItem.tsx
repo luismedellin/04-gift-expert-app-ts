@@ -1,6 +1,6 @@
 import { Image } from "../helpers/getGifs";
 
-export const GifItem = ({title, url}) => {
+export const GifItem = ({title, url}: Image) => {
 
     
   return (
