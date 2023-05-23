@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 interface Props {
-    setCategories: (value: string) => void;
+    onNewCategory: (value: string) => void;
 }
 
-export const AddCategory = ({setCategories}: Props) => {
+export const AddCategory = ({onNewCategory}: Props) => {
   const [inputValue, setInputValue] = useState('');
 
   const onInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +15,7 @@ export const AddCategory = ({setCategories}: Props) => {
     event.preventDefault();
     if(inputValue.trim().length <= 1) return;
     
-    setCategories(inputValue);
+    onNewCategory(inputValue.trim());
     setInputValue('');
   }
 
